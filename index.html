@@ -9,7 +9,7 @@
 body{
   margin:0;
   font-family:"Yu Gothic","Hiragino Sans",sans-serif;
-  background:#f6fbf6;
+  background:#f3f7f1;
   color:#35523a;
   text-align:center;
   min-height:100vh;
@@ -19,123 +19,154 @@ body{
 }
 
 .wrap{
-  max-width:420px;
-  padding:40px 20px;
+  width:100%;
+  max-width:430px;
+  padding:40px 20px 70px;
+  box-sizing:border-box;
+  position:relative;
 }
 
 .title{
   font-size:40px;
   color:#5fae66;
-  margin-bottom:20px;
+  margin:180px 0 20px;
+  line-height:1.2;
 }
 
 .sub{
   font-size:18px;
   line-height:1.8;
   margin-bottom:40px;
+  color:#48634d;
 }
 
 .start{
-  font-size:70px;
+  font-size:92px;
   cursor:pointer;
+  animation:float 2.5s ease-in-out infinite;
+  line-height:1;
 }
 
 .text{
-  margin-top:10px;
+  margin-top:14px;
   font-size:16px;
-  color:#6c8b72;
+  color:#7a8f7e;
+}
+
+.envelope-wrap{
+  position:relative;
+  width:170px;
+  margin:20px auto 0;
+  height:170px;
 }
 
 .envelope{
-  font-size:80px;
-  margin-top:20px;
+  font-size:120px;
+  line-height:1;
+  position:absolute;
+  left:50%;
+  top:18px;
+  transform:translateX(-50%);
 }
 
 .seal{
-  font-size:40px;
+  font-size:46px;
   cursor:pointer;
+  position:absolute;
+  left:50%;
+  top:88px;
+  transform:translateX(-50%);
+  line-height:1;
 }
 
 .result{
-  margin-top:30px;
-  font-size:26px;
+  margin-top:34px;
+  font-size:24px;
   line-height:1.8;
+  color:#48634d;
+}
+
+.result strong{
+  display:block;
+  margin-top:10px;
+  font-size:30px;
+  color:#4f7f58;
+}
+
+.message{
+  margin-top:18px;
+  font-size:17px;
+  line-height:1.9;
+  color:#5f7564;
 }
 
 .lily{
   position:absolute;
-  font-size:30px;
-  opacity:0.5;
+  top:55px;
+  font-size:20px;
+  line-height:1.3;
+  color:#9bb79f;
+  opacity:0.95;
 }
 
 .left{
-  left:10px;
-  top:80px;
+  left:8px;
+  text-align:left;
 }
 
 .right{
-  right:10px;
-  top:80px;
+  right:8px;
+  text-align:right;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0);}
 }
 </style>
 </head>
-
 <body>
-
-<div class="lily left">🤍🌿🤍</div>
-<div class="lily right">🤍🌿🤍</div>
 
 <div class="wrap">
 
-<div class="title">花のたより</div>
+  <div class="lily left">
+    🌿🤍<br>
+    🌿🤍<br>
+    🌿🤍
+  </div>
 
-<div class="sub">
-そっと心にふれる<br>
-あなたの花を見つけます
-</div>
+  <div class="lily right">
+    🤍🌿<br>
+    🤍🌿<br>
+    🤍🌿
+  </div>
 
-<div id="startArea">
+  <div class="title">花のたより</div>
 
-<div class="start" onclick="showEnvelope()">🍀</div>
-<div class="text">クローバーを押してください</div>
+  <div class="sub">
+    そっと心にふれる<br>
+    あなたの花を見つけます
+  </div>
 
-</div>
+  <div id="startArea">
+    <div class="start" onclick="showEnvelope()">🍀</div>
+    <div class="text">クローバーを押してください</div>
+  </div>
 
-<div id="envelopeArea" style="display:none">
+  <div id="envelopeArea" style="display:none;">
+    <div class="envelope-wrap">
+      <div class="envelope">✉️</div>
+      <div class="seal" onclick="openLetter()">🍀</div>
+    </div>
+    <div class="text">シールをめくってください</div>
+  </div>
 
-<div class="envelope">✉️</div>
-<div class="seal" onclick="openLetter()">🍀</div>
-<div class="text">シールをめくってください</div>
-
-</div>
-
-<div id="result" class="result"></div>
+  <div id="result" class="result"></div>
+  <div id="message" class="message"></div>
 
 </div>
 
 <script>
-
 const flowers = [
-"🌸 さくら",
-"🌷 チューリップ",
-"🌻 ひまわり",
-"🤍 すずらん",
-"🌼 たんぽぽ"
-];
-
-function showEnvelope(){
-  document.getElementById("startArea").style.display="none";
-  document.getElementById("envelopeArea").style.display="block";
-}
-
-function openLetter(){
-  const n = Math.floor(Math.random()*flowers.length);
-  document.getElementById("envelopeArea").style.display="none";
-  document.getElementById("result").innerHTML=
-  "あなたの花は<br><b>"+flowers[n]+"</b>";
-}
-
-</script>
-
-</body>
-</html>
+  {
