@@ -27,4 +27,88 @@
     .title-row{
       display:flex;
       justify-content:center;
-      align
+      align-items:center;
+      gap:12px;
+      flex-wrap:nowrap;
+    }
+
+    .title{
+      font-size:48px;
+      font-weight:700;
+      color:#58a85f;
+      line-height:1.2;
+      margin:0;
+      white-space:nowrap;
+    }
+
+    .mark{
+      font-size:34px;
+      line-height:1;
+      color:#e450c8;
+      flex-shrink:0;
+    }
+
+    .sub{
+      font-size:20px;
+      line-height:1.8;
+      margin:0 0 36px;
+      color:#2e4733;
+    }
+
+    .fortune-btn{
+      display:inline-block;
+      min-width:190px;
+      padding:20px 36px;
+      border:none;
+      border-radius:999px;
+      background:#7ed957;
+      color:#ffffff;
+      font-size:28px;
+      font-weight:500;
+      box-shadow:0 8px 22px rgba(126,217,87,0.22);
+      cursor:pointer;
+    }
+
+    #result{
+      margin-top:36px;
+      font-size:26px;
+      color:#4d7a57;
+      line-height:1.8;
+      min-height:60px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="logo-area">
+      <div class="title-row">
+        <span class="mark">❀</span>
+        <h1 class="title">花のたより</h1>
+        <span class="mark">❀</span>
+      </div>
+    </div>
+
+    <p class="sub">あなたの魂の花を占います</p>
+
+    <button class="fortune-btn" onclick="uranai()">占う</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const flowers = [
+      "🌸 さくら",
+      "🌷 チューリップ",
+      "🌻 ひまわり",
+      "💠 すずらん",
+      "🌼 たんぽぽ"
+    ];
+
+    function uranai() {
+      const n = Math.floor(Math.random() * flowers.length);
+      document.getElementById("result").innerHTML =
+        "あなたの花は<br><strong>" + flowers[n] + "</strong>";
+    }
+  </script>
+</body>
+</html>
