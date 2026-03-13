@@ -205,6 +205,24 @@ function openLetter(){
     flowers[n].message;
 }
 </script>
+<script>
 
+function showEnvelope(){
+  document.getElementById("startArea").style.display = "none";
+  document.getElementById("envelopeArea").style.display = "block";
+}
+
+function openLetter(el){
+
+  el.style.transform = "rotate(-120deg)";
+  el.style.transition = "0.6s";
+
+  setTimeout(function(){
+    document.getElementById("letter").style.display = "block";
+  },600);
+
+}
+
+</script>
 </body>
 </html>
