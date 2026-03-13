@@ -4,3 +4,89 @@
 花のたより
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>花のたより</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: #f8fff8;
+      color: #35523a;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wrap {
+      padding: 32px 20px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: #4d7a57;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .clover-btn {
+      width: 140px;
+      height: 140px;
+      border: none;
+      border-radius: 50%;
+      background: #8fd694;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 8px 20px rgba(80, 140, 90, 0.25);
+      cursor: pointer;
+    }
+
+    .sub {
+      margin-top: 18px;
+      font-size: 16px;
+      color: #6c8b72;
+    }
+
+    #message {
+      margin-top: 28px;
+      font-size: 20px;
+      color: #4d7a57;
+      min-height: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>花のたより</h1>
+    <p>
+      そっと心にふれる<br>
+      あなたの花を見つけます
+    </p>
+
+    <button class="clover-btn" onclick="openMessage()">🍀</button>
+
+    <div class="sub">クローバーを押してください</div>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function openMessage() {
+      document.getElementById("message").innerHTML = "ふわりと花のたよりが届きました";
+    }
+  </script>
+</body>
+</html>
