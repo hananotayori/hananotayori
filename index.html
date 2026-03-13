@@ -6,223 +6,191 @@
 <title>花のたより</title>
 
 <style>
+
 body{
-  margin:0;
-  font-family:"Yu Gothic","Hiragino Sans",sans-serif;
-  background:#f3f7f1;
-  color:#35523a;
-  text-align:center;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+margin:0;
+font-family:"Yu Gothic","Hiragino Sans",sans-serif;
+background:#f3f7f1;
+color:#35523a;
+text-align:center;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .wrap{
-  width:100%;
-  max-width:430px;
-  padding:40px 20px 70px;
-  box-sizing:border-box;
-  position:relative;
+max-width:420px;
+padding:40px 20px;
+position:relative;
 }
 
 .title{
-  font-size:40px;
-  color:#5fae66;
-  margin:180px 0 20px;
-  line-height:1.2;
+font-size:38px;
+color:#5fae66;
+margin-top:120px;
+margin-bottom:20px;
 }
 
 .sub{
-  font-size:18px;
-  line-height:1.8;
-  margin-bottom:40px;
-  color:#48634d;
+font-size:18px;
+line-height:1.8;
+margin-bottom:40px;
 }
 
 .start{
-  font-size:92px;
-  cursor:pointer;
-  animation:float 2.5s ease-in-out infinite;
-  line-height:1;
+font-size:80px;
+cursor:pointer;
+animation:float 2.5s ease-in-out infinite;
 }
 
 .text{
-  margin-top:14px;
-  font-size:16px;
-  color:#7a8f7e;
-}
-
-.envelope-wrap{
-  position:relative;
-  width:170px;
-  margin:20px auto 0;
-  height:170px;
+margin-top:10px;
+font-size:16px;
+color:#6c8b72;
 }
 
 .envelope{
-  font-size:120px;
-  line-height:1;
-  position:absolute;
-  left:50%;
-  top:18px;
-  transform:translateX(-50%);
+font-size:120px;
+margin-top:20px;
 }
 
 .seal{
-  font-size:46px;
-  cursor:pointer;
-  position:absolute;
-  left:50%;
-  top:88px;
-  transform:translateX(-50%);
-  line-height:1;
+font-size:42px;
+cursor:pointer;
+margin-top:-40px;
 }
 
 .result{
-  margin-top:34px;
-  font-size:24px;
-  line-height:1.8;
-  color:#48634d;
-}
-
-.result strong{
-  display:block;
-  margin-top:10px;
-  font-size:30px;
-  color:#4f7f58;
+margin-top:40px;
+font-size:26px;
+line-height:1.8;
 }
 
 .message{
-  margin-top:18px;
-  font-size:17px;
-  line-height:1.9;
-  color:#5f7564;
+margin-top:10px;
+font-size:18px;
+color:#4d7a57;
 }
 
 .lily{
-  position:absolute;
-  top:55px;
-  font-size:20px;
-  line-height:1.3;
-  color:#9bb79f;
-  opacity:0.95;
+position:absolute;
+top:40px;
+font-size:22px;
+opacity:0.6;
 }
 
 .left{
-  left:8px;
-  text-align:left;
+left:0;
 }
 
 .right{
-  right:8px;
-  text-align:right;
+right:0;
 }
 
 @keyframes float{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-  100%{transform:translateY(0);}
+0%{transform:translateY(0px);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0px);}
 }
+
 </style>
 </head>
+
 <body>
 
 <div class="wrap">
 
-  <div class="lily left">
-    🌿🤍<br>
-    🌿🤍<br>
-    🌿🤍
-  </div>
+<div class="lily left">
+🌿🤍<br>
+🌿🤍<br>
+🌿🤍
+</div>
 
-  <div class="lily right">
-    🤍🌿<br>
-    🤍🌿<br>
-    🤍🌿
-  </div>
+<div class="lily right">
+🤍🌿<br>
+🤍🌿<br>
+🤍🌿
+</div>
 
-  <div class="title">花のたより</div>
+<div class="title">花のたより</div>
 
-  <div class="sub">
-    そっと心にふれる<br>
-    あなたの花を見つけます
-  </div>
+<div class="sub">
+そっと心にふれる<br>
+あなたの花を見つけます
+</div>
 
-  <div id="startArea">
-    <div class="start" onclick="showEnvelope()">🍀</div>
-    <div class="text">クローバーを押してください</div>
-  </div>
+<div id="startArea">
 
-  <div id="envelopeArea" style="display:none;">
-    <div class="envelope-wrap">
-      <div class="envelope">✉️</div>
-      <div class="seal" onclick="openLetter()">🍀</div>
-    </div>
-    <div class="text">シールをめくってください</div>
-  </div>
+<div class="start" onclick="showEnvelope()">🍀</div>
+<div class="text">クローバーを押してください</div>
 
-  <div id="result" class="result"></div>
-  <div id="message" class="message"></div>
+</div>
+
+<div id="envelopeArea" style="display:none">
+
+<div class="envelope">✉️</div>
+<div class="seal" onclick="openLetter()">🍀</div>
+<div class="text">シールをめくってください</div>
+
+</div>
+
+<div id="result" class="result"></div>
+<div id="message" class="message"></div>
 
 </div>
 
 <script>
+
 const flowers = [
-  {
-    name:"🤍 すずらん",
-    message:"あなたは静かなやさしさを持つ人。そっと寄り添う力があります。"
-  },
-  {
-    name:"🌸 さくら",
-    message:"あなたは始まりの風を運ぶ人。新しい流れをやわらかく呼び込みます。"
-  },
-  {
-    name:"🌷 チューリップ",
-    message:"あなたは素直なあたたかさを持つ人。心をまっすぐに伝える美しさがあります。"
-  },
-  {
-    name:"🌻 ひまわり",
-    message:"あなたは周りを明るく照らす人。前を向く力をそっと分けてくれます。"
-  },
-  {
-    name:"🌼 たんぽぽ",
-    message:"あなたは自然体の強さを持つ人。やさしく、しなやかに咲く力があります。"
-  }
+
+{
+name:"🤍 すずらん",
+message:"やさしく静かな心を持つあなた。そっと寄り添う力があります。"
+},
+
+{
+name:"🌸 さくら",
+message:"新しい流れを呼び込む人。あなたは始まりを運びます。"
+},
+
+{
+name:"🌷 チューリップ",
+message:"素直なあたたかさを持つ人。まっすぐな心が魅力です。"
+},
+
+{
+name:"🌻 ひまわり",
+message:"周りを明るく照らす人。あなたの笑顔は太陽のようです。"
+},
+
+{
+name:"🌼 たんぽぽ",
+message:"自然体の強さを持つ人。しなやかに咲く力があります。"
+}
+
 ];
 
 function showEnvelope(){
-  document.getElementById("startArea").style.display = "none";
-  document.getElementById("envelopeArea").style.display = "block";
+document.getElementById("startArea").style.display="none";
+document.getElementById("envelopeArea").style.display="block";
 }
 
 function openLetter(){
-  const n = Math.floor(Math.random() * flowers.length);
-  document.getElementById("envelopeArea").style.display = "none";
-  document.getElementById("result").innerHTML =
-    "あなたの花は<strong>" + flowers[n].name + "</strong>";
-  document.getElementById("message").innerHTML =
-    flowers[n].message;
-}
-</script>
-<script>
 
-function showEnvelope(){
-  document.getElementById("startArea").style.display = "none";
-  document.getElementById("envelopeArea").style.display = "block";
-}
+const n=Math.floor(Math.random()*flowers.length);
 
-function openLetter(el){
+document.getElementById("envelopeArea").style.display="none";
 
-  el.style.transform = "rotate(-120deg)";
-  el.style.transition = "0.6s";
+document.getElementById("result").innerHTML=
+"あなたの花は<br><strong>"+flowers[n].name+"</strong>";
 
-  setTimeout(function(){
-    document.getElementById("letter").style.display = "block";
-  },600);
+document.getElementById("message").innerHTML=
+flowers[n].message;
 
 }
 
 </script>
+
 </body>
 </html>
