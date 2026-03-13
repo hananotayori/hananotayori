@@ -170,3 +170,41 @@ body{
 <script>
 const flowers = [
   {
+    name:"🤍 すずらん",
+    message:"あなたは静かなやさしさを持つ人。そっと寄り添う力があります。"
+  },
+  {
+    name:"🌸 さくら",
+    message:"あなたは始まりの風を運ぶ人。新しい流れをやわらかく呼び込みます。"
+  },
+  {
+    name:"🌷 チューリップ",
+    message:"あなたは素直なあたたかさを持つ人。心をまっすぐに伝える美しさがあります。"
+  },
+  {
+    name:"🌻 ひまわり",
+    message:"あなたは周りを明るく照らす人。前を向く力をそっと分けてくれます。"
+  },
+  {
+    name:"🌼 たんぽぽ",
+    message:"あなたは自然体の強さを持つ人。やさしく、しなやかに咲く力があります。"
+  }
+];
+
+function showEnvelope(){
+  document.getElementById("startArea").style.display = "none";
+  document.getElementById("envelopeArea").style.display = "block";
+}
+
+function openLetter(){
+  const n = Math.floor(Math.random() * flowers.length);
+  document.getElementById("envelopeArea").style.display = "none";
+  document.getElementById("result").innerHTML =
+    "あなたの花は<strong>" + flowers[n].name + "</strong>";
+  document.getElementById("message").innerHTML =
+    flowers[n].message;
+}
+</script>
+
+</body>
+</html>
