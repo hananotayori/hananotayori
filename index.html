@@ -1,1 +1,57 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>花のたより</title>
+
+<style>
+
+body{
+font-family:sans-serif;
+background:#f9fff9;
+text-align:center;
+padding:40px;
+}
+
+h1{
+color:#4caf50;
+}
+
+button{
+font-size:20px;
+padding:15px 30px;
+border-radius:50px;
+border:none;
+background:#7ed957;
+color:white;
+cursor:pointer;
+}
+
+.result{
+margin-top:40px;
+font-size:22px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🌸 花のたより 🌸</h1>
+
+<p>あなたの魂の花を占います</p>
+
+<button onclick="uranai()">占う</button>
+
+<div class="result" id="result"></div>
+
+<script>
+
+const flowers = [
+"🌸 さくら",
+"🌻 ひまわり",
+"🌷 チューリップ",
+"🌼
