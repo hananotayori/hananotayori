@@ -1,72 +1,80 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>花のたより</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>花のたより</title>
+  <style>
+    body{
+      margin:0;
+      min-height:100vh;
+      background:#f3f7f1;
+      font-family:"Yu Gothic","Hiragino Sans",sans-serif;
+      color:#2f4f38;
+    }
 
-<style>
+    .wrap{
+      max-width:420px;
+      margin:0 auto;
+      padding:60px 24px 80px;
+      text-align:center;
+    }
 
-body{
-font-family:sans-serif;
-background:#f9fff9;
-text-align:center;
-padding:40px;
-}
+    .logo-area{
+      margin-bottom:40px;
+    }
 
-h1{
-color:#4caf50;
-}
+    .title{
+      font-size:48px;
+      font-weight:700;
+      color:#58a85f;
+      line-height:1.2;
+      margin:0 0 20px;
+    }
 
-button{
-font-size:20px;
-padding:15px 30px;
-border-radius:50px;
-border:none;
-background:#7ed957;
-color:white;
-cursor:pointer;
-}
+    .mark{
+      font-size:34px;
+      line-height:1;
+      color:#e450c8;
+      margin:0 12px;
+    }
 
-.result{
-margin-top:40px;
-font-size:22px;
-}
+    .sub{
+      font-size:20px;
+      line-height:1.8;
+      margin:0 0 36px;
+      color:#2e4733;
+    }
 
-</style>
-
+    .fortune-btn{
+      display:inline-block;
+      min-width:190px;
+      padding:20px 36px;
+      border:none;
+      border-radius:999px;
+      background:#7ed957;
+      color:#ffffff;
+      font-size:28px;
+      font-weight:500;
+      box-shadow:0 8px 22px rgba(126,217,87,0.22);
+    }
+  </style>
 </head>
-
 <body>
+  <div class="wrap">
+    <div class="logo-area">
+      <div>
+        <span class="mark">❀</span>
+        <span class="title">花のたより</span>
+        <span class="mark">❀</span>
+      </div>
+    </div>
 
-<h1>🌸 花のたより 🌸</h1>
+    <p class="sub">
+      あなたの魂の花を占います
+    </p>
 
-<p>あなたの魂の花を占います</p>
-
-<button onclick="uranai()">占う</button>
-
-<div class="result" id="result"></div>
-
-<script>
-
-const flowers = [
-"🌸 さくら",
-"🌻 ひまわり",
-"🌷 チューリップ",
-"🌼 たんぽぽ",
-"💐 すずらん"
-]
-
-function uranai(){
-
-const r = Math.floor(Math.random()*flowers.length)
-
-document.getElementById("result").innerHTML =
-"あなたの花は<br><br><b>"+flowers[r]+"</b>です"
-
-}
-
-</script>
-
+    <button class="fortune-btn">占う</button>
+  </div>
 </body>
 </html>
