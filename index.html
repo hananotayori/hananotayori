@@ -16,11 +16,12 @@ body{
 }
 
 .wrap{
+  width:100%;
   max-width:430px;
   margin:0 auto;
   padding:40px 20px 80px;
-  position:relative;
   box-sizing:border-box;
+  position:relative;
 }
 
 .title{
@@ -38,12 +39,43 @@ body{
   color:#48634d;
 }
 
+.start-wrap{
+  position:relative;
+  width:120px;
+  height:120px;
+  margin:0 auto;
+}
+
 .start{
   font-size:88px;
   line-height:1;
   cursor:pointer;
-  animation:float 2.6s ease-in-out infinite;
   user-select:none;
+  animation:float 2.6s ease-in-out infinite;
+  transition:transform 0.8s ease, opacity 0.8s ease;
+  position:relative;
+  z-index:2;
+}
+
+.start.hide{
+  transform:rotate(180deg) scale(0.2);
+  opacity:0;
+}
+
+.sparkle{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(0.2);
+  opacity:0;
+  font-size:34px;
+  transition:all 0.8s ease;
+  pointer-events:none;
+}
+
+.sparkle.show{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1.2);
 }
 
 .text{
@@ -69,29 +101,21 @@ body{
   background:#fffdf8;
   border:3px solid #8a8a8a;
   box-sizing:border-box;
+  z-index:2;
 }
 
-.envelope:before,
-.envelope:after{
+.envelope::before{
   content:"";
   position:absolute;
-  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  margin:auto;
   width:0;
   height:0;
-  border-top:58px solid transparent;
-  border-bottom:58px solid transparent;
-}
-
-.envelope:before{
-  left:0;
-  border-left:88px solid transparent;
-  border-right:0 solid transparent;
-}
-
-.envelope:after{
-  right:0;
-  border-right:88px solid transparent;
-  border-left:0 solid transparent;
+  border-left:90px solid transparent;
+  border-right:90px solid transparent;
+  border-bottom:60px solid #f2ede4;
 }
 
 .flap{
@@ -104,9 +128,9 @@ body{
   height:0;
   border-left:90px solid transparent;
   border-right:90px solid transparent;
-  border-top:70px solid #efebe2;
+  border-top:70px solid #efe8dc;
   transition:transform 0.8s ease;
-  z-index:3;
+  z-index:4;
 }
 
 .flap.open{
@@ -143,14 +167,8 @@ body{
   transform:translateX(-50%);
   font-size:42px;
   line-height:1;
-  cursor:pointer;
-  z-index:4;
+  z-index:5;
   user-select:none;
-  transition:transform 0.8s ease, opacity 0.5s ease;
-}
-
-.seal.hide{
-  transform:translateX(-50%) rotate(-120deg) translateY(-12px);
   opacity:0;
 }
 
@@ -159,6 +177,12 @@ body{
   font-size:24px;
   line-height:1.8;
   color:#48634d;
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.result.show{
+  opacity:1;
 }
 
 .result strong{
@@ -173,6 +197,12 @@ body{
   font-size:17px;
   line-height:1.9;
   color:#5f7564;
+  opacity:0;
+  transition:opacity 0.8s ease;
+}
+
+.message.show{
+  opacity:1;
 }
 
 .lily{
@@ -225,7 +255,10 @@ body{
   </div>
 
   <div id="startArea">
-    <div class="start" onclick="showEnvelope()">🍀</div>
+    <div class="start-wrap">
+      <div id="startBtn" class="start" onclick="showEnvelope()">🍀</div>
+      <div id="sparkle" class="sparkle">✨</div>
+    </div>
     <div class="text">クローバーをそっと押してください</div>
   </div>
 
@@ -234,9 +267,8 @@ body{
       <div id="letter" class="letter">花のたより</div>
       <div class="envelope"></div>
       <div id="flap" class="flap"></div>
-      <div id="seal" class="seal" onclick="openLetter()">🍀</div>
+      <div id="seal" class="seal">🍀</div>
     </div>
-    <div class="text">クローバーをそっと押してください</div>
   </div>
 
   <div id="result" class="result"></div>
@@ -269,29 +301,43 @@ const flowers = [
 ];
 
 function showEnvelope(){
-  document.getElementById("startArea").style.display = "none";
-  document.getElementById("envelopeArea").style.display = "block";
+  const btn = document.getElementById("startBtn");
+  const sparkle = document.getElementById("sparkle");
+
+  btn.classList.add("hide");
+  sparkle.classList.add("show");
+
+  setTimeout(function(){
+    document.getElementById("startArea").style.display = "none";
+    document.getElementById("envelopeArea").style.display = "block";
+    openLetter();
+  }, 850);
 }
 
 function openLetter(){
-  const seal = document.getElementById("seal");
   const flap = document.getElementById("flap");
   const letter = document.getElementById("letter");
   const n = Math.floor(Math.random() * flowers.length);
 
-  seal.classList.add("hide");
-  flap.classList.add("open");
+  setTimeout(function(){
+    flap.classList.add("open");
+  }, 200);
 
   setTimeout(function(){
     letter.classList.add("show");
-  }, 250);
+  }, 450);
 
   setTimeout(function(){
-    document.getElementById("result").innerHTML =
-      "あなたの花は<strong>" + flowers[n].name + "</strong>";
-    document.getElementById("message").innerHTML =
-      flowers[n].message;
-  }, 900);
+    const result = document.getElementById("result");
+    const message = document.getElementById("message");
+
+    result.innerHTML =
+      "今日あなたに届いた花は<strong>" + flowers[n].name + "</strong>";
+    message.innerHTML = flowers[n].message;
+
+    result.classList.add("show");
+    message.classList.add("show");
+  }, 1000);
 }
 </script>
 
