@@ -6,190 +6,293 @@
 <title>花のたより</title>
 
 <style>
-
 body{
-margin:0;
-font-family:"Yu Gothic","Hiragino Sans",sans-serif;
-background:#f3f7f1;
-color:#35523a;
-text-align:center;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
+  margin:0;
+  font-family:"Yu Gothic","Hiragino Sans",sans-serif;
+  background:#f3f7f1;
+  color:#35523a;
+  text-align:center;
+  min-height:100vh;
 }
 
 .wrap{
-max-width:420px;
-padding:40px 20px;
-position:relative;
+  max-width:430px;
+  margin:0 auto;
+  padding:40px 20px 80px;
+  position:relative;
+  box-sizing:border-box;
 }
 
 .title{
-font-size:38px;
-color:#5fae66;
-margin-top:120px;
-margin-bottom:20px;
+  font-size:38px;
+  color:#5fae66;
+  margin:150px 0 20px;
+  line-height:1.2;
+  font-weight:500;
 }
 
 .sub{
-font-size:18px;
-line-height:1.8;
-margin-bottom:40px;
+  font-size:18px;
+  line-height:1.9;
+  margin-bottom:40px;
+  color:#48634d;
 }
 
 .start{
-font-size:80px;
-cursor:pointer;
-animation:float 2.5s ease-in-out infinite;
+  font-size:88px;
+  line-height:1;
+  cursor:pointer;
+  animation:float 2.6s ease-in-out infinite;
+  user-select:none;
 }
 
 .text{
-margin-top:10px;
-font-size:16px;
-color:#6c8b72;
+  margin-top:12px;
+  font-size:16px;
+  color:#7a8f7e;
+}
+
+.envelope-scene{
+  width:220px;
+  margin:30px auto 0;
+  position:relative;
+  height:190px;
 }
 
 .envelope{
-font-size:120px;
-margin-top:20px;
+  position:absolute;
+  left:50%;
+  bottom:0;
+  transform:translateX(-50%);
+  width:180px;
+  height:120px;
+  background:#fffdf8;
+  border:3px solid #8a8a8a;
+  box-sizing:border-box;
+}
+
+.envelope:before,
+.envelope:after{
+  content:"";
+  position:absolute;
+  top:0;
+  width:0;
+  height:0;
+  border-top:58px solid transparent;
+  border-bottom:58px solid transparent;
+}
+
+.envelope:before{
+  left:0;
+  border-left:88px solid transparent;
+  border-right:0 solid transparent;
+}
+
+.envelope:after{
+  right:0;
+  border-right:88px solid transparent;
+  border-left:0 solid transparent;
+}
+
+.flap{
+  position:absolute;
+  left:50%;
+  top:8px;
+  transform:translateX(-50%) rotateX(0deg);
+  transform-origin:top center;
+  width:0;
+  height:0;
+  border-left:90px solid transparent;
+  border-right:90px solid transparent;
+  border-top:70px solid #efebe2;
+  transition:transform 0.8s ease;
+  z-index:3;
+}
+
+.flap.open{
+  transform:translateX(-50%) rotateX(180deg);
+}
+
+.letter{
+  position:absolute;
+  left:50%;
+  bottom:20px;
+  transform:translateX(-50%) translateY(30px);
+  width:140px;
+  background:#fffefb;
+  border:2px solid #d8d0c3;
+  border-radius:8px;
+  padding:14px 10px;
+  box-sizing:border-box;
+  font-size:16px;
+  color:#5a6f5f;
+  opacity:0;
+  transition:all 0.8s ease;
+  z-index:1;
+}
+
+.letter.show{
+  opacity:1;
+  transform:translateX(-50%) translateY(-45px);
 }
 
 .seal{
-font-size:42px;
-cursor:pointer;
-margin-top:-40px;
+  position:absolute;
+  left:50%;
+  top:78px;
+  transform:translateX(-50%);
+  font-size:42px;
+  line-height:1;
+  cursor:pointer;
+  z-index:4;
+  user-select:none;
+  transition:transform 0.8s ease, opacity 0.5s ease;
+}
+
+.seal.hide{
+  transform:translateX(-50%) rotate(-120deg) translateY(-12px);
+  opacity:0;
 }
 
 .result{
-margin-top:40px;
-font-size:26px;
-line-height:1.8;
+  margin-top:38px;
+  font-size:24px;
+  line-height:1.8;
+  color:#48634d;
+}
+
+.result strong{
+  display:block;
+  margin-top:10px;
+  font-size:30px;
+  color:#4f7f58;
 }
 
 .message{
-margin-top:10px;
-font-size:18px;
-color:#4d7a57;
+  margin-top:18px;
+  font-size:17px;
+  line-height:1.9;
+  color:#5f7564;
 }
 
 .lily{
-position:absolute;
-top:40px;
-font-size:22px;
-opacity:0.6;
+  position:absolute;
+  top:55px;
+  font-size:20px;
+  line-height:1.35;
+  opacity:0.9;
+  color:#9bb79f;
 }
 
 .left{
-left:0;
+  left:8px;
+  text-align:left;
 }
 
 .right{
-right:0;
+  right:8px;
+  text-align:right;
 }
 
 @keyframes float{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0px);}
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+  100%{transform:translateY(0);}
 }
-
 </style>
 </head>
-
 <body>
 
 <div class="wrap">
 
-<div class="lily left">
-🌿🤍<br>
-🌿🤍<br>
-🌿🤍
-</div>
+  <div class="lily left">
+    🌿🤍<br>
+    🌿🤍<br>
+    🌿🤍
+  </div>
 
-<div class="lily right">
-🤍🌿<br>
-🤍🌿<br>
-🤍🌿
-</div>
+  <div class="lily right">
+    🤍🌿<br>
+    🤍🌿<br>
+    🤍🌿
+  </div>
 
-<div class="title">花のたより</div>
+  <div class="title">花のたより</div>
 
-<div class="sub">
-そっと心にふれる<br>
-あなたの花を見つけます
-</div>
+  <div class="sub">
+    そっと心にふれる<br>
+    あなたの花を見つけます
+  </div>
 
-<div id="startArea">
+  <div id="startArea">
+    <div class="start" onclick="showEnvelope()">🍀</div>
+    <div class="text">クローバーをそっと押してください</div>
+  </div>
 
-<div class="start" onclick="showEnvelope()">🍀</div>
-<div class="text">クローバーを押してください</div>
+  <div id="envelopeArea" style="display:none;">
+    <div class="envelope-scene">
+      <div id="letter" class="letter">花のたより</div>
+      <div class="envelope"></div>
+      <div id="flap" class="flap"></div>
+      <div id="seal" class="seal" onclick="openLetter()">🍀</div>
+    </div>
+    <div class="text">クローバーをそっと押してください</div>
+  </div>
 
-</div>
-
-<div id="envelopeArea" style="display:none">
-
-<div class="envelope">✉️</div>
-<div class="seal" onclick="openLetter()">🍀</div>
-<div class="text">シールをめくってください</div>
-
-</div>
-
-<div id="result" class="result"></div>
-<div id="message" class="message"></div>
+  <div id="result" class="result"></div>
+  <div id="message" class="message"></div>
 
 </div>
 
 <script>
-
 const flowers = [
-
-{
-name:"🤍 すずらん",
-message:"やさしく静かな心を持つあなた。そっと寄り添う力があります。"
-},
-
-{
-name:"🌸 さくら",
-message:"新しい流れを呼び込む人。あなたは始まりを運びます。"
-},
-
-{
-name:"🌷 チューリップ",
-message:"素直なあたたかさを持つ人。まっすぐな心が魅力です。"
-},
-
-{
-name:"🌻 ひまわり",
-message:"周りを明るく照らす人。あなたの笑顔は太陽のようです。"
-},
-
-{
-name:"🌼 たんぽぽ",
-message:"自然体の強さを持つ人。しなやかに咲く力があります。"
-}
-
+  {
+    name:"🤍 すずらん",
+    message:"やさしく静かな心を持つあなた。そっと寄り添う力があります。"
+  },
+  {
+    name:"🌸 さくら",
+    message:"新しい流れを呼び込む人。あなたは始まりを運びます。"
+  },
+  {
+    name:"🌷 チューリップ",
+    message:"素直なあたたかさを持つ人。まっすぐな心が魅力です。"
+  },
+  {
+    name:"🌻 ひまわり",
+    message:"周りを明るく照らす人。あなたの笑顔は太陽のようです。"
+  },
+  {
+    name:"🌼 たんぽぽ",
+    message:"自然体の強さを持つ人。しなやかに咲く力があります。"
+  }
 ];
 
 function showEnvelope(){
-document.getElementById("startArea").style.display="none";
-document.getElementById("envelopeArea").style.display="block";
+  document.getElementById("startArea").style.display = "none";
+  document.getElementById("envelopeArea").style.display = "block";
 }
 
 function openLetter(){
+  const seal = document.getElementById("seal");
+  const flap = document.getElementById("flap");
+  const letter = document.getElementById("letter");
+  const n = Math.floor(Math.random() * flowers.length);
 
-const n=Math.floor(Math.random()*flowers.length);
+  seal.classList.add("hide");
+  flap.classList.add("open");
 
-document.getElementById("envelopeArea").style.display="none";
+  setTimeout(function(){
+    letter.classList.add("show");
+  }, 250);
 
-document.getElementById("result").innerHTML=
-"あなたの花は<br><strong>"+flowers[n].name+"</strong>";
-
-document.getElementById("message").innerHTML=
-flowers[n].message;
-
+  setTimeout(function(){
+    document.getElementById("result").innerHTML =
+      "あなたの花は<strong>" + flowers[n].name + "</strong>";
+    document.getElementById("message").innerHTML =
+      flowers[n].message;
+  }, 900);
 }
-
 </script>
 
 </body>
