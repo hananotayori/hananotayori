@@ -310,11 +310,12 @@ opacity:1;
       <div id="flap" class="flap"></div>
     </div>
   </div>
-<div id="result" class="result"></div>
+ <div id="result" class="result"></div>
 <div id="message" class="message"></div>
-<div class="share">
+
+<div id="share" class="share">
   <a id="shareBtn" target="_blank">この花のたよりを届ける</a>
-</div>
+</div> 
 
 </div>
 
@@ -1695,6 +1696,10 @@ function showEnvelope(){
 function openLetter(){
   const flap = document.getElementById("flap");
   const letter = document.getElementById("letter");
+  const result = document.getElementById("result");
+  const message = document.getElementById("message");
+  const share = document.getElementById("share");
+  const shareBtn = document.getElementById("shareBtn");
   const n = Math.floor(Math.random() * flowers.length);
 
   setTimeout(function(){
@@ -1706,22 +1711,20 @@ function openLetter(){
   }, 550);
 
   setTimeout(function(){
-  const share = document.getElementById("share");
-const shareBtn = document.getElementById("shareBtn");
-
     result.innerHTML =
       "今日あなたに届いた花は<strong>" + flowers[n].name + "</strong>";
     message.innerHTML = flowers[n].message;
 
     result.classList.add("show");
     message.classList.add("show");
-    shareBtn.href =
-  "https://twitter.com/intent/tweet?text=" +
-  encodeURIComponent("今日の花のたよりを受け取りました🌸 " + flowers[n].name) +
-  "&url=" +
-  encodeURIComponent(location.href);
 
-share.classList.add("show");
+    shareBtn.href =
+      "https://twitter.com/intent/tweet?text=" +
+      encodeURIComponent("今日の花のたよりを受け取りました🌸 " + flowers[n].name) +
+      "&url=" +
+      encodeURIComponent(location.href);
+
+    share.classList.add("show");
   }, 1200);
 }
 </script>
