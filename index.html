@@ -373,6 +373,75 @@ opacity:1;
 </div>
 
 <script>
+
+
+const questions = [
+"ひとりの時間が好きですか",
+"静かな場所にいると安心しますか",
+"人の気持ちに敏感だと思いますか",
+"頼まれると断れないことがありますか",
+"自分のことは後回しにしがちですか",
+"ふと疲れを感じることがありますか",
+"誰かにそっと寄り添いたいと思いますか",
+"やさしい言葉に救われたことがありますか",
+"新しいことに少しワクワクしますか",
+"直感で動くことがありますか",
+"気づいたら誰かのために動いていますか",
+"小さな幸せを見つけるのが得意ですか",
+"頑張りすぎてしまうことがありますか",
+"周りを明るくしたいと思いますか",
+"人と比べて落ち込むことがありますか",
+"自分らしさを大切にしたいと思いますか",
+"大切な人の顔がすぐ浮かびますか",
+"誰かと心が通じたと感じたことがありますか",
+"やさしさは連鎖すると思いますか",
+"何気ない日常が好きですか",
+"自分を少し休ませたいと思っていますか",
+"心がほっとする瞬間がありますか",
+"誰かに「大丈夫」と言いたいと思いますか",
+"今日もよく頑張ったと思えますか"
+];
+
+let current = 0;
+let score = 0;
+
+function startTest(){
+  document.getElementById("startArea").style.display = "none";
+  document.getElementById("questionArea").style.display = "block";
+  showQuestion();
+}
+
+function showQuestion(){
+  document.getElementById("questionText").innerText = questions[current];
+}
+
+function answerYes(){
+  score++;
+  nextQuestion();
+}
+
+function answerNo(){
+  nextQuestion();
+}
+
+function nextQuestion(){
+  current++;
+  if(current < questions.length){
+    showQuestion();
+  }else{
+    showResult();
+  }
+}
+
+function showResult(){
+  document.getElementById("questionArea").style.display = "none";
+
+  // 今までの花表示に戻す
+  openLetter();
+}
+
+
+  
 const flowers = [
 
 {
