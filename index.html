@@ -323,11 +323,13 @@ opacity:1;
 <div id="message" class="message"></div>
 
 <div id="share" class="share">
-  <a id="shareBtn" target="_blank">この花のたよりを届ける</a>
+
+<div id="share" class="share">
+  <a id="shareBtn" href="#"> 花のたよりをみんなに届ける</a>
   <div class="retry">
-<a href="">もう一度 花のたよりを受け取る</a>
-</div>
-</div> 
+    <a href="">もう一度 花のたよりを受け取る</a>
+  </div>
+</div>  
 
 </div>
 
@@ -1730,7 +1732,7 @@ function openLetter(){
     result.classList.add("show");
     message.classList.add("show");
 
-    shareBtn.onclick = function(e){
+shareBtn.onclick = function(e){
   e.preventDefault();
 
   const shareText = "今日の花のたよりを受け取りました🌸 " + flowers[n].name;
@@ -1743,13 +1745,15 @@ function openLetter(){
       url: shareUrl
     });
   } else {
-    // fallback → LINE優先にする
     window.open(
-      "https://line.me/R/msg/text/?" + encodeURIComponent(shareText + " " + shareUrl),
+      "https://twitter.com/intent/tweet?text=" +
+      encodeURIComponent(shareText) +
+      "&url=" +
+      encodeURIComponent(shareUrl),
       "_blank"
     );
   }
-}
+};
       share.classList.add("show");
   }, 1200);
 }
