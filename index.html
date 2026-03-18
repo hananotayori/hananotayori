@@ -355,8 +355,10 @@ opacity:1;
 
 <div id="questionArea" style="display:none;">
   <div id="questionText" style="font-size:20px; margin:40px 0;"></div>
-  <button onclick="answerYes()">はい</button>
-  <button onclick="answerNo()">いいえ</button>
+  <button onclick="answer(3)">よくある</button>
+<button onclick="answer(2)">ときどきある</button>
+<button onclick="answer(1)">あまりない</button>
+<button onclick="answer(0)">ない</button>
 </div>
 
 <div id="envelopeArea" style="display:none;">
@@ -412,6 +414,8 @@ let current = 0;
 let score = 0;
 
 function startTest(){
+  current = 0;
+  score = 0;
   document.getElementById("startArea").style.display = "none";
   document.getElementById("questionArea").style.display = "block";
   showQuestion();
@@ -421,12 +425,8 @@ function showQuestion(){
   document.getElementById("questionText").innerText = questions[current];
 }
 
-function answerYes(){
-  score++;
-  nextQuestion();
-}
-
-function answerNo(){
+function answer(point){
+  score += point;
   nextQuestion();
 }
 
