@@ -1827,7 +1827,7 @@ function openLetter(){
   const message = document.getElementById("message");
   const share = document.getElementById("share");
   const shareBtn = document.getElementById("shareBtn");
-  const n = Math.floor(Math.random() * flowers.length);
+　const n = score % flowers.length;
 
   setTimeout(function(){
     flap.classList.add("open");
