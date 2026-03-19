@@ -313,7 +313,28 @@ opacity:1;
   opacity:0.5;
 }
 
-  
+#questionArea button{
+  display:block;
+  width:100%;
+  max-width:320px;
+  margin:12px auto;
+  padding:14px 18px;
+  border:none;
+  border-radius:30px;
+  background:#6fae7a;
+  color:#ffffff;
+  font-size:16px;
+  cursor:pointer;
+  transition:all 0.3s ease;
+}
+
+#questionArea button:active{
+  transform:scale(0.97);
+  opacity:0.9;
+}
+  #questionArea{
+  padding:20px 0 10px;
+  }
 </style>
 </head>
 
@@ -352,7 +373,7 @@ opacity:1;
 </div>
 
 <div id="questionArea" style="display:none;">
-  <div id="questionText" style="font-size:20px; margin:40px 0;"></div>
+　<div id="questionText" style="font-size:28px; line-height:1.8; margin:50px 0 30px; color:#48634d;"></div>
 <button onclick="answer(3)">とてもあてはまる</button>
 <button onclick="answer(2)">少しあてはまる</button>
 <button onclick="answer(1)">あまりあてはまらない</button>
