@@ -1844,8 +1844,14 @@ function openLetter(){
 
 shareBtn.onclick = async function(e){
   e.preventDefault();
+shareBtn.onclick = async function(e){
+  e.preventDefault();
 
-  const shareText = "今日の花のたよりを受け取りました🌸 " + flowers[n].name;
+  const shareText =
+    "🌸 花のたより 🌸\n" +
+    "あなたに届いた花は「" + flowers[n].name + "」でした\n\n" +
+    "そっと心にふれる花診断はこちら👇";
+
   const shareUrl = location.href;
 
   if (navigator.share) {
@@ -1857,6 +1863,8 @@ shareBtn.onclick = async function(e){
       });
     } catch (err) {
     }
+  } else {
+    alert("共有シートを使うには、Chromeなどのブラウザで開いてください。");
   }
 };
   }, 1200);
