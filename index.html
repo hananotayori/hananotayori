@@ -1844,8 +1844,6 @@ function openLetter(){
 
 shareBtn.onclick = async function(e){
   e.preventDefault();
-shareBtn.onclick = async function(e){
-  e.preventDefault();
 
   const shareText =
     "🌸 花のたより 🌸\n" +
@@ -1862,6 +1860,7 @@ shareBtn.onclick = async function(e){
         url: shareUrl
       });
     } catch (err) {
+      // 何もしない（キャンセル時）
     }
   } else {
     alert("共有シートを使うには、Chromeなどのブラウザで開いてください。");
