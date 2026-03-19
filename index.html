@@ -1842,28 +1842,23 @@ function openLetter(){
     message.classList.add("show");
     share.classList.add("show");
 
-    shareBtn.onclick = function(e){
-      e.preventDefault();
+    shareBtn.onclick = async function(e){
+  e.preventDefault();
 
-      const shareText = "今日の花のたよりを受け取りました🌸 " + flowers[n].name;
-      const shareUrl = location.href;
+  const shareText = "今日の花のたよりを受け取りました🌸 " + flowers[n].name;
+  const shareUrl = location.href;
 
-      if (navigator.share) {
-        navigator.share({
-          title: "花のたより",
-          text: shareText,
-          url: shareUrl
-        });
-      } else {
-        window.open(
-          "https://twitter.com/intent/tweet?text=" +
-          encodeURIComponent(shareText) +
-          "&url=" +
-          encodeURIComponent(shareUrl),
-          "_blank"
-        );
-      }
-    };
+  if (navigator.share) {
+    try {
+      await navigator.share({
+        title: "花のたより",
+        text: shareText,
+        url: shareUrl
+      });
+    } catch (err) {
+    }
+  }
+};
   }, 1200);
 }
 
