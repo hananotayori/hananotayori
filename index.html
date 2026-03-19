@@ -1842,10 +1842,13 @@ function openLetter(){
     message.classList.add("show");
     share.classList.add("show");
 
-    shareBtn.onclick = async function(e){
+shareBtn.onclick = async function(e){
   e.preventDefault();
 
-  const shareText = "今日の花のたよりを受け取りました🌸 " + flowers[n].name;
+  const shareText = "🌸 花のたより 🌸\n" +
+  "あなたに届いた花は「" + flowers[n].name + "」でした\n\n" +
+  "そっと心にふれる花診断はこちら👇";
+
   const shareUrl = location.href;
 
   if (navigator.share) {
@@ -1856,7 +1859,17 @@ function openLetter(){
         url: shareUrl
       });
     } catch (err) {
+      // キャンセルされた場合など
     }
+  } else {
+    // 共有シートが使えない場合だけX
+    window.open(
+      "https://twitter.com/intent/tweet?text=" +
+      encodeURIComponent(shareText) +
+      "&url=" +
+      encodeURIComponent(shareUrl),
+      "_blank"
+    );
   }
 };
   }, 1200);
