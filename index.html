@@ -382,32 +382,34 @@ opacity:1;
 
 <script>
 
-
 const questions = [
-"ひとりの時間が好きですか",
-"静かな場所にいると安心しますか",
-"人の気持ちに敏感だと思いますか",
-"頼まれると断れないことがありますか",
-"自分のことは後回しにしがちですか",
-"ふと疲れを感じることがありますか",
-"誰かにそっと寄り添いたいと思いますか",
-"やさしい言葉に救われたことがありますか",
+"静かな時間は好きですか",
+"人と一緒に過ごす時間は好きですか",
+"小さな幸せに気づくことがありますか",
+"気づくと周りを優先していることがありますか",
 "新しいことに少しワクワクしますか",
-"直感で動くことがありますか",
-"気づいたら誰かのために動いていますか",
-"小さな幸せを見つけるのが得意ですか",
-"頑張りすぎてしまうことがありますか",
-"周りを明るくしたいと思いますか",
-"人と比べて落ち込むことがありますか",
-"自分らしさを大切にしたいと思いますか",
-"大切な人の顔がすぐ浮かびますか",
-"誰かと心が通じたと感じたことがありますか",
-"やさしさは連鎖すると思いますか",
+"思いついたらすぐ行動する方ですか",
+"美しいものを見ると心がやわらぎますか",
+"困っている人を見ると声をかけたくなりますか",
+"少し疲れているかもしれないと感じることがありますか",
+"自分の直感を大切にしていますか",
+"懐かしい記憶をふと思い出すことがありますか",
+"自分の気持ちがわからなくなることがありますか",
+"何もせずゆっくり過ごしたい日がありますか",
+"新しい出会いに少し期待していますか",
 "何気ない日常が好きですか",
-"自分を少し休ませたいと思っていますか",
-"心がほっとする瞬間がありますか",
-"誰かに「大丈夫」と言いたいと思いますか",
-"今日もよく頑張ったと思えますか"
+"周りを明るくしたいと思うことがありますか",
+"心が通じたと感じる人はいますか",
+"ひとりで抱え込んでしまうことがありますか",
+"やさしさは広がっていくものだと思いますか",
+"今日もよく頑張ったと思えますか",
+"自分の気持ちを言葉にするのは得意ですか",
+"誰かと比べてしまうことがありますか",
+"誰かにそっと寄り添ってほしいと感じることがありますか",
+"強く願っていることはありますか",
+"もし今、空に虹が出ていたら少し立ち止まって見上げてみたいと思いますか",
+"花の香りにふと足を止めてその花を探したことがありますか",
+"つらい出来事があっても時間とともにやわらいでいくと感じますか"
 ];
 
 let current = 0;
@@ -427,10 +429,6 @@ function showQuestion(){
 
 function answer(point){
   score += point;
-  nextQuestion();
-}
-
-function nextQuestion(){
   current++;
   if(current < questions.length){
     showQuestion();
@@ -439,7 +437,7 @@ function nextQuestion(){
   }
 }
 
-function function showResult(){
+function showResult(){
   document.getElementById("questionArea").style.display = "none";
   document.getElementById("envelopeArea").style.display = "block";
   openLetter();
@@ -1830,7 +1828,7 @@ function openLetter(){
   const message = document.getElementById("message");
   const share = document.getElementById("share");
   const shareBtn = document.getElementById("shareBtn");
-　const n = score % flowers.length;
+ const n = score % flowers.length; 
 
   setTimeout(function(){
     flap.classList.add("open");
