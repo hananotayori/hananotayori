@@ -115,21 +115,34 @@ body{
 
 .question-text{
   display:block;
-  width:auto;
-  max-width:12.5em;
-  margin:50px auto 30px;
+  width:min(100%, 14em);
+  margin:36px auto 24px;
   padding:0;
   box-sizing:border-box;
-  font-size:19px;
-  line-height:1.8;
+  font-size:18px;
+  line-height:1.75;
   text-align:center;
   white-space:normal;
-  word-break:normal;
-  overflow-wrap:anywhere;
+  word-break:keep-all;
+  overflow-wrap:normal;
   line-break:strict;
+  text-wrap:balance;
 }
 
+@media (max-width:390px){
+  .question-text{
+    width:min(100%, 13em);
+    font-size:17px;
+    line-height:1.7;
+  }
 
+  #questionArea button{
+    max-width:290px;
+    padding:11px 14px;
+    font-size:15px;
+  }
+}
+  
 /* ボタン */
 
 #questionArea button{
@@ -293,7 +306,25 @@ body{
 </head>
 
 <body>
+body.question-mode .brand,
+body.question-mode .side{
+  display:none;
+}
 
+body.question-mode .title{
+  font-size:32px;
+  margin:28px 0 12px;
+}
+
+body.question-mode .sub{
+  font-size:16px;
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+body.question-mode .wrap{
+  padding-top:20px;
+}
 <div class="wrap">
 
 <div class="brand">From FLOWER</div>
@@ -390,9 +421,11 @@ const questions = [
 let current = 0;
 let score = 0;
 
+
 function startTest(){
   current = 0;
   score = 0;
+  document.body.classList.add("question-mode");
   document.getElementById("startArea").style.display = "none";
   document.getElementById("questionArea").style.display = "block";
   showQuestion();
@@ -413,6 +446,7 @@ function answer(point){
 }
 
 function showResult(){
+  document.body.classList.remove("question-mode");
   document.getElementById("questionArea").style.display = "none";
   document.getElementById("envelopeArea").style.display = "block";
   openLetter();
@@ -1821,9 +1855,10 @@ shareBtn.onclick = async function(e){
   e.preventDefault();
 
   const shareText =
-    "🌸 花のたより 🌸\n" +
-    "あなたに届いた花は「" + flowers[n].name + "」でした\n\n" +
-    "そっと心にふれる花診断はこちら👇";
+  "🌸 花のたよりを送ります\n" +
+  "よかったら受け取ってみてください。\n\n" +
+  "私に届いた花は「" + flowers[n].name + "」でした。\n" +
+  "そっと心にふれる花診断はこちら👇";
 
   const shareUrl = location.href;
 
