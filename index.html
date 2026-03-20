@@ -145,21 +145,21 @@ body{
   
 /* ボタン */
 
-#questionArea button{
+.question-text{
   display:block;
-  width:100%;
-  max-width:300px;
-  margin:10px auto;
-  padding:12px 16px;
-  border:none;
-  border-radius:26px;
-  background:#6fae7a;
-  color:#ffffff;
-  font-size:15px;
-  font-weight:500;
-  cursor:pointer;
-  transition:all 0.2s ease;
-}  
+  width:calc(100% - 40px);
+  max-width:320px;
+  margin:36px auto 24px;
+  padding:0;
+  box-sizing:border-box;
+  font-size:18px;
+  line-height:1.75;
+  text-align:center;
+
+  white-space:normal;
+  word-break:break-word;
+  overflow-wrap:anywhere;
+}
 
 #questionArea button:active{
   transform:scale(0.97);
