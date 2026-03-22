@@ -447,7 +447,13 @@ function startTest(){
 }
 
 function showQuestion(){
-  document.getElementById("questionText").innerText = questions[current];
+  const questionText = document.getElementById("questionText");
+  questionText.style.opacity = 0;
+
+  setTimeout(function(){
+    questionText.innerText = questions[current];
+    questionText.style.opacity = 1;
+  }, 180);
 }
 
 function answer(point){
