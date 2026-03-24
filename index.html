@@ -114,10 +114,13 @@ body{
 }
 
 .question-text{
-  display:block;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   width:calc(100% - 40px);
   max-width:320px;
-  margin:36px auto 24px;
+  min-height:120px;
+  margin:28px auto 20px;
   padding:0;
   box-sizing:border-box;
   font-size:18px;
@@ -126,9 +129,8 @@ body{
   white-space:normal;
   word-break:break-word;
   overflow-wrap:anywhere;
-  transition:opacity 0.25s ease;
 }
-
+  
 @media (max-width:390px){
   .question-text{
     width:min(100%, 13em);
