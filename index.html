@@ -111,26 +111,29 @@ body{
 /* 質問 */
 #questionArea{
   padding:10px 0 20px;
-}
-
+  min-height:420px;
+}  
 .question-text{
   display:flex;
   align-items:center;
   justify-content:center;
   width:calc(100% - 40px);
-  min-height:110px;
-  max-height:150px;
+  max-width:360px;
+  min-height:120px;
   margin:28px auto 20px;
-  padding:0;
+  padding:0 8px;
   box-sizing:border-box;
   font-size:18px;
   line-height:1.75;
   text-align:center;
-  white-space:normal;
-  word-break:break-word;
-  overflow-wrap:anywhere;
+  white-space:pre-line;
+  word-break:normal;
+  overflow-wrap:break-word;
 }
-  
+#questionArea{
+  min-height:420px;
+}
+
 @media (max-width:390px){
   .question-text{
     width:min(100%, 13em);
@@ -250,33 +253,36 @@ body{
 /* 結果 */
 .result{
   margin-top:38px;
-  font-size:28px;
+  font-size:22px;
   line-height:1.8;
   opacity:0;
   transition:opacity 0.8s ease;
 }
-
+  
 .result.show{
   opacity:1;
 }
 
 .result strong{
   display:block;
-  margin-top:12px;
-  font-size:34px;
+  margin-top:10px;
+  font-size:30px;
+  line-height:1.4;
 }
-
+ 
 /* メッセージ */
 .message{
   margin-top:18px;
-  padding:0 20px 10px;
-  font-size:19px;
-  line-height:2;
+  padding:0 20px 20px;
+  font-size:18px;
+  line-height:1.95;
   color:#5f7564;
   opacity:0;
   transition:opacity 0.8s ease;
   white-space:pre-line;
 }
+
+
 .message.show{
   opacity:1;
 }
@@ -407,33 +413,32 @@ body.question-mode .wrap{
 const questions = [
 "静かな時間は好きですか",
 "人と一緒に過ごす時間は好きですか",
-"小さな幸せに気づくことが\nありますか",
-"気づくと周りを優先している\nことがありますか",
-"新しいことに少しワクワク\nしますか",
-"思いついたらすぐ行動する\n方ですか",
-"美しいものを見ると心が\nやわらぎますか",
-"困っている人を見ると\n声をかけたくなりますか",
-"少し疲れているかもしれないと\n感じることがありますか",
+"小さな幸せに気づくことがありますか",
+"気づくと周りを優先していることがありますか",
+"新しいことに少しワクワクしますか",
+"思いついたらすぐ行動する方ですか",
+"美しいものを見ると心がやわらぎますか",
+"困っている人を見ると声をかけたくなりますか",
+"少し疲れているかもしれないと感じることがありますか",
 "自分の直感を大切にしていますか",
-"懐かしい記憶をふと思い出す\nことがありますか",
-"自分の気持ちがわからなくなる\nことがありますか",
-"何もせずゆっくり過ごしたい日が\nありますか",
-"新しい出会いに少し期待して\nいますか",
+"懐かしい記憶をふと思い出すことがありますか",
+"自分の気持ちがわからなくなることがありますか",
+"何もせずゆっくり過ごしたい日がありますか",
+"新しい出会いに少し期待していますか",
 "何気ない日常が好きですか",
-"周りを明るくしたいと思う\nことがありますか",
-"心が通じたと感じる人は\nいますか",
-"ひとりで抱え込んでしまう\nことがありますか",
-"やさしさは広がっていくものだと\n思いますか",
-"今日もよく頑張ったと\n思えますか",
-"自分の気持ちを言葉にするのは\n得意ですか",
-"誰かと比べてしまうことが\nありますか",
-"誰かにそっと寄り添ってほしいと\n感じることがありますか",
-"強く願っていることは\nありますか",
+"周りを明るくしたいと思うことがありますか",
+"心が通じたと感じる人はいますか",
+"ひとりで抱え込んでしまうことがありますか",
+"やさしさは広がっていくものだと思いますか",
+"今日もよく頑張ったと思えますか",
+"自分の気持ちを言葉にするのは得意ですか",
+"誰かと比べてしまうことがありますか",
+"誰かにそっと寄り添ってほしいと感じることがありますか",
+"強く願っていることはありますか",
 "もし今、空に虹が出ていたら\n少し立ち止まって見上げてみたいと思いますか",
 "花の香りにふと足を止めて\nその花を探したことがありますか",
 "つらい出来事があっても時間とともに\nやわらいでいくと感じますか"
 ];
-
 let current = 0;
 let score = 0;
 
