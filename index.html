@@ -313,6 +313,18 @@ body.question-mode .sub{
   font-size:18px;
 }
 
+#lineBtn{
+  width:100%;
+  max-width:320px;
+  padding:16px;
+  margin-top:12px;
+  border:none;
+  border-radius:28px;
+  background:#4CAF50;
+  color:white;
+  font-size:18px;
+}
+
 /* リトライ */
 .retry a{
   display:inline-block;
@@ -402,8 +414,11 @@ body.question-mode .wrap{
 <div id="result" class="result"></div>
 <div id="message" class="message"></div>
 
-<div id="share" class="share">
-  <button id="shareBtn" type="button">花のたよりを届ける</button>
+<div id="share" class="share"><button id="shareBtn" type="button">花のたよりを届ける</button>
+
+<button id="lineBtn" type="button" class="line">
+  LINEで送る
+</button>
   <div class="retry">
     <a href="#" onclick="location.reload(); return false;">
   もう一度　受け取る
@@ -1864,6 +1879,23 @@ function openLetter(){
   const message = document.getElementById("message");
   const share = document.getElementById("share");
   const shareBtn = document.getElementById("shareBtn");
+ const lineBtn = document.getElementById("lineBtn"); 
+lineBtn.onclick = function(e){
+  e.preventDefault();
+
+  const text =
+    "🌸 花のたより 🌸\n" +
+    "あなたにも、そっと届きますように。\n\n" +
+    "私に届いた花は「" + flowers[n].name + "」でした。\n" +
+    "よかったら受け取ってみてください👇\n";
+
+  const url = location.href;
+
+  const lineText = encodeURIComponent(text + url);
+
+  window.open("https://line.me/R/msg/text/?" + lineText, "_blank");
+};
+  
   const n = score % flowers.length;
 
   setTimeout(function(){
