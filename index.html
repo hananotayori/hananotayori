@@ -1872,6 +1872,7 @@ function showEnvelope(){
     openLetter();
   }, 1400);
 }
+  
 function openLetter(){
   const flap = document.getElementById("flap");
   const letter = document.getElementById("letter");
@@ -1879,24 +1880,14 @@ function openLetter(){
   const message = document.getElementById("message");
   const share = document.getElementById("share");
   const shareBtn = document.getElementById("shareBtn");
- const lineBtn = document.getElementById("lineBtn"); 
-lineBtn.onclick = function(e){
-  e.preventDefault();
+  const lineBtn = document.getElementById("lineBtn");
 
-  const text =
-    "🌸 花のたより 🌸\n" +
-    "あなたにも、そっと届きますように。\n\n" +
-    "私に届いた花は「" + flowers[n].name + "」でした。\n" +
-    "よかったら受け取ってみてください👇\n";
+  const today = new Date().getDate();
+  const n = (score + today) % flowers.length;
 
-  const url = location.href;
-
-  const lineText = encodeURIComponent(text + url);
-
-  window.open("https://line.me/R/msg/text/?" + lineText, "_blank");
-};
-  
-  const n = score % flowers.length;
+  const main = flowers[n];
+  const sub = flowers[(n + 1) % flowers.length];
+  const wrap = flowers[(n + 2) % flowers.length];
 
   setTimeout(function(){
     flap.classList.add("open");
@@ -1908,41 +1899,75 @@ lineBtn.onclick = function(e){
 
   setTimeout(function(){
     result.innerHTML =
-      "今日あなたに届いた花は<strong>" + flowers[n].name + "</strong>";
-    message.innerHTML = flowers[n].message;
+      "あなたに届いた花のたより<br><br>" +
+      "そっと開くと現れたのは<br>" +
+      "<strong>" + main.name + "</strong>";
+
+    message.innerHTML =
+      "この花は\n今のあなたの心を映しています\n\n" +
+
+      "そして\n\n" +
+      "そっと寄り添う花は\n" +
+      sub.name + "\n\n" +
+      "あなたのそばで\n静かに支えてくれる存在です\n\n" +
+
+      "さらに\n\n" +
+      "やさしく包み込む花は\n" +
+      wrap.name + "\n\n" +
+      "あなたを安心へと導く\nあたたかなぬくもりです\n\n" +
+
+      "またふと、花のたよりを受け取りたくなったら\n" +
+      "いつでも訪れてくださいね。";
 
     result.classList.add("show");
     message.classList.add("show");
     share.classList.add("show");
 
-shareBtn.onclick = async function(e){
-  e.preventDefault();
+    shareBtn.onclick = async function(e){
+      e.preventDefault();
 
-  const shareText =
-  "🌸 花のたよりを送ります\n" +
-  "よかったら受け取ってみてください。\n\n" +
-  "私に届いた花は「" + flowers[n].name + "」でした。\n" +
-  "そっと心にふれる花診断はこちら👇";
+      const shareText =
+        "🌸 花のたより 🌸\n" +
+        "あなたにも、そっと届きますように。\n\n" +
+        "私に届いた花は「" + main.name + "」でした。\n" +
+        "そっと寄り添う花は「" + sub.name + "」\n" +
+        "やさしく包み込む花は「" + wrap.name + "」でした。\n\n" +
+        "よかったら受け取ってみてください👇";
 
-  const shareUrl = location.href;
+      const shareUrl = location.href;
 
-  if (navigator.share) {
-    try {
-      await navigator.share({
-        title: "花のたより",
-        text: shareText,
-        url: shareUrl
-      });
-    } catch (err) {
-      // 何もしない（キャンセル時）
-    }
-  } else {
-    alert("共有シートを使うには、Chromeなどのブラウザで開いてください。");
-  }
-};
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "花のたより",
+            text: shareText,
+            url: shareUrl
+          });
+        } catch (err) {
+        }
+      } else {
+        alert("この端末では共有機能が使えませんでした。");
+      }
+    };
+
+    lineBtn.onclick = function(e){
+      e.preventDefault();
+
+      const text =
+        "🌸 花のたより 🌸\n" +
+        "あなたにも、そっと届きますように。\n\n" +
+        "私に届いた花は「" + main.name + "」でした。\n" +
+        "そっと寄り添う花は「" + sub.name + "」\n" +
+        "やさしく包み込む花は「" + wrap.name + "」でした。\n\n" +
+        "よかったら受け取ってみてください👇\n";
+
+      const url = location.href;
+      const lineText = encodeURIComponent(text + url);
+
+      window.open("https://line.me/R/msg/text/?" + lineText, "_blank");
+    };
   }, 1200);
 }
-
 
 </script>
 
