@@ -360,6 +360,22 @@ body.question-mode .wrap{
   50%{transform:translateY(-12px)}
   100%{transform:translateY(0)}
 }
+
+.result,
+.message,
+.share{
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+
+.result.show,
+.message.show,
+.share.show{
+  opacity:1;
+  transform:translateY(0);
+}
+ 
 </style>
 </head>
 
@@ -1903,21 +1919,26 @@ function openLetter(){
       "そっと開くと現れたのは<br>" +
       "<strong>" + main.name + "</strong>";
 
-    message.innerHTML =
-      "この花は\n今のあなたの心を映しています\n\n" +
+message.innerHTML =
+  "この花は\n今のあなたの心を映しています\n\n" +
+  "今のあなたの中にある\n" +
+  "やさしさや願い、そして小さな揺らぎまで\n" +
+  "そっと映し出してくれる花です\n\n" +
 
-      "そして\n\n" +
-      "そっと寄り添う花は\n" +
-      sub.name + "\n\n" +
-      "あなたのそばで\n静かに支えてくれる存在です\n\n" +
+  "そして\n\n" +
+  "そっと寄り添う花は\n" +
+  "【 " + sub.name + " 】\n" +
+  "あなたのそばで\n" +
+  "静かに支えてくれる存在です\n\n" +
 
-      "さらに\n\n" +
-      "やさしく包み込む花は\n" +
-      wrap.name + "\n\n" +
-      "あなたを安心へと導く\nあたたかなぬくもりです\n\n" +
+  "さらに\n\n" +
+  "やさしく包み込む花は\n" +
+  "【 " + wrap.name + " 】\n" +
+  "あなたを安心へと導く\n" +
+  "あたたかなぬくもりです\n\n" +
 
-      "またふと、花のたよりを受け取りたくなったら\n" +
-      "いつでも訪れてくださいね。";
+  "またふと、花のたよりを受け取りたくなったら\n" +
+  "いつでも訪れてくださいね。";
 
     result.classList.add("show");
     message.classList.add("show");
