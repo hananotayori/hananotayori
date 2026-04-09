@@ -380,7 +380,18 @@ body.question-mode .wrap{
   opacity:1;
   transform:translateY(0);
 }
- 
+
+  .fade-soft{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-soft.show{
+  opacity:1;
+  transform:translateY(0);
+} 
+  
 </style>
 </head>
 
@@ -1930,19 +1941,21 @@ message.innerHTML =
   "やさしさや願い、そして小さな揺らぎまで\n" +
   "そっと映し出してくれる花です\n\n" +
 
+  "<span id='subBlock' class='fade-soft'>" +
   "そして\n\n" +
   "そっと寄り添う花は\n" +
-
-"【 <span class='flower-sub'>" + sub.name + "</span> 】\n" +
-  
+  "【 <span class='flower-sub'>" + sub.name + "</span> 】\n" +
   "あなたのそばで\n" +
-  "静かに支えてくれる存在です\n\n" +
+  "静かに支えてくれる存在です" +
+  "</span>\n\n" +
 
+  "<span id='wrapBlock' class='fade-soft'>" +
   "さらに\n\n" +
-  "やさしく包み込む花は\n" 
-    +"【 <span class='flower-sub'>" + wrap.name + "</span> 】\n" +
+  "やさしく包み込む花は\n" +
+  "【 <span class='flower-sub'>" + wrap.name + "</span> 】\n" +
   "あなたを安心へと導く\n" +
-  "あたたかなぬくもりです\n\n" +
+  "あたたかなぬくもりです" +
+  "</span>\n\n" +
 
   "またふと、花のたよりを受け取りたくなったら\n" +
   "いつでも訪れてくださいね。";
@@ -1951,6 +1964,14 @@ message.innerHTML =
     message.classList.add("show");
     share.classList.add("show");
 
+setTimeout(function(){
+  document.getElementById("subBlock")?.classList.add("show");
+}, 400);
+
+setTimeout(function(){
+  document.getElementById("wrapBlock")?.classList.add("show");
+}, 900);
+    
     shareBtn.onclick = async function(e){
       e.preventDefault();
 
